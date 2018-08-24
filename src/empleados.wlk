@@ -1,10 +1,11 @@
 object gimenez {
 	// la linea que sigue es equivalente a todo lo que está debajo.
-	// le agrega al objeto: un atributo, el método para acceder, y el método para modificar.
-//	var property sueldo = 15000
+	// le agrega  al objeto: un atributo, el método para acceder, y el método para modificar.
+//	var property sueldo = 15000 cambio
 
-	var sueldo = 15000
-	method sueldo() { return 15000 }
+
+	var sueldo = 1500000
+	method sueldo() { return 150000 }//aca retorna el valor 15000 no la variable
 	method sueldo(nuevoValor) { sueldo = nuevoValor }
 }
 
