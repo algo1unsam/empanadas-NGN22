@@ -14,40 +14,84 @@ object gimenez {
 	method totalCobrado(){ return totalCobrado}
 	method cobrarSueldo(){
 		totalCobrado += sueldo
-		if(self.tengoDeuda()){
+		if(self.tengoDeuda()){						
 			dineroDisponible = self.cobrarDeuda()
+			
 		}
 	}
 	//parte b
 	//metodos agregados parte b
+	
+	//post: muestra la deuda acumulada
 	method totalDeuda(){
 		return deuda
 	}
+	
+	//post: suma el monto gastado a la deuda o dinero
 	method gastar(cuanto){
 		if(self.tengoDinero()){
 			self.cobrarDineroDisponible(cuanto)
 		}
 		else {self.sumarDeuda(cuanto)}
 	}
+	
+	//suma a la deuda el monto dado
 	method sumarDeuda(cuanto){
+		deuda += cuanto
+	}
+	
+	
+	//post: descuenta el monto del dineroDisponible
+	method cobrarDineroDisponible(cuanto){
+		
+		dineroDisponible -= cuanto		
+		self.verificoDineroDisponible()
 		
 	}
-	method cobrarDineroDisponible(cuanto){
-		dineroDisponible -= cuanto
+	
+	//post: si el dinero disponible es < 0 lo suma a la deuda
+	method verificoDineroDisponible(){
+		
+		if(!(self.tengoDinero())){
+			self.sumarDeuda( dineroDisponible * (-1))
+			dineroDisponible = 0
+		}
 	}
+	//post: si tengo dinero disponible
 	method tengoDinero(){
 		return dineroDisponible > 0
 	}
+	
+	//devuelve el monto del dinero disponible
 	method totalDinero(){
 		return dineroDisponible
 	}
 	//metodos extra
+	
+	//post:  deuda > = 0 verdadera
 	method tengoDeuda(){
-		return self.totalDeuda() == 0
+		return ( self.totalDeuda() >= 0)
 	}
-	method cobrarDeuda(){
-		return deuda -= sueldo		 
+	
+	//post: descuenta a mi deuda el monto del sueldo devuelve el resto  
+	method cobrarDeuda(){			
+		deuda = deuda - sueldo		 			
+		return self.sueldoRestante()			 
 	}
+	
+		
+	//inicial: se desconto a la deuda el monto mensual
+	//post si la deuda es saldada
+	method sueldoRestante(){
+		var sueldoRestante = 0  
+		if(!self.tengoDeuda()){
+			sueldoRestante = deuda * (-1)
+			deuda = 0
+		}		
+		return sueldoRestante
+	}
+	
+	
 }
 	
 	
