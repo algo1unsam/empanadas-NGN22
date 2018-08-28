@@ -81,7 +81,7 @@ object gimenez {
 	
 		
 	//inicial: se desconto a la deuda el monto mensual
-	//post si la deuda es saldada
+	//post: si la deuda es saldada
 	method sueldoRestante(){
 		var sueldoRestante = 0  
 		if(!self.tengoDeuda()){
