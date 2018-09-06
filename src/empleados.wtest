@@ -1,5 +1,8 @@
 import empleados.*
 
+// estaría bueno agregar mas test, que testean las cosas de a una
+// y que testeen también otras cosas, como la deuda
+
 test "sueldo de Baigorria y de Gimenez" {
 	baigorria.venderEmpanada()
 	baigorria.venderEmpanada()
