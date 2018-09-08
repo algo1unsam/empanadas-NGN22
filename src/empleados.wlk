@@ -26,6 +26,7 @@ object gimenez {
 
 	// (DEBY) no se podrá unificar totalCobrado y dinseroDisponible?
 	// o por alguna razón queres tener guardado el totalCobrado sin descontar deuda??
+	// conservo los dos, se devuelve lo que cobro en toda su vida lo tome como un acumulador 
 	method cobrarSueldo() {
 		totalCobrado += sueldo
 		if (self.tengoDeuda()) {
@@ -43,8 +44,10 @@ object gimenez {
 	// post: suma el monto gastado a la deuda o dinero
 	method gastar(cuanto) {
 		// (DEBY) acá en realidad no debería testear que tengo dinero para pagar cuanto? (en lugar de > 0)
+		//no, por que segun el enunciado siempre  va comprarlo sumandole el monto qeu no le alcanza a la deuda
 		if (self.tengoDinero()) {
 			// (DEBY) por qué cobrar y no pagar??
+			//por que asocio el pagar como cobrar como sinonimos eso es elgo personal y se podria hacer mas entendible
 			self.cobrarDineroDisponible(cuanto)
 		} else {
 			self.sumarDeuda(cuanto)
